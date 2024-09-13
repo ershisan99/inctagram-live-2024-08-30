@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    <title>Sign In</title>
+  </head>
+  <style>
+    :root {
+      color-scheme: dark light;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+
+  <body>
+    <form>
+      <div>
+        <label for="email-input">Email</label>
+        <input
+          name="email"
+          id="email-input"
+          placeholder="Email"
+          type="email"
+        />
+      </div>
+
+      <div>
+        <label for="password-input">Password</label>
+        <input
+          name="password"
+          id="password-input"
+          placeholder="Password"
+        />
+      </div>
+      <div>
+        <label for="checkbox-input">Checkbox</label>
+        <input
+          required
+          name="checkbox"
+          type="checkbox"
+          id="checkbox-input"
+          value="true"
+        />
+      </div>
+      <button type="button">Not submit</button>
+      <button>Submit</button>
+    </form>
+  </body>
+  <script>
+    const form = document.querySelector('form')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const formObj = Object.fromEntries(new FormData(form))
+      console.log(formObj)
+    })
+  </script>
+</html>
