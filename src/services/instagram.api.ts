@@ -10,21 +10,13 @@ import {
   UserPosts,
   UserProfile,
 } from '@/services/instagram.types'
+import { baseQueryWithReauth } from '@/services/instagram.base-query'
 
 // Define a service using a base URL and expected endpoints
 export const instagramApi = createApi({
   tagTypes: ['Posts'],
   reducerPath: 'instagramApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://inctagram.work/api/',
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem('access_token')
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`)
-      }
-      return headers
-    },
-  }),
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getAllPublicPosts: builder.query<
       GetAllPostsResponse,

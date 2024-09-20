@@ -35,7 +35,9 @@ export default function Login() {
       .unwrap()
       .then((data) => {
         localStorage.setItem('access_token', data.accessToken)
-        router.push('/')
+        const payload = data.accessToken.split('.')[1]
+        const id = JSON.parse(atob(payload)).userId
+        router.push(`/profile/${id}`)
       })
   })
 
